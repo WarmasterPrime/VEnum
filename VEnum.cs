@@ -1,5 +1,8 @@
 ﻿namespace VEnum
 {
+	/// <summary>
+	/// Manages <see cref="Enum"/> objects.
+	/// </summary>
 	public class VEnum
 	{
 		/// <summary>
