@@ -8,27 +8,21 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>$(AssemblyName)</Title>
-    <Company>Daniel K. Valente</Company>
+    <Company>VirtmaAdvance</Company>
     <Description>Provides a new class object that manages Enum objects. Also provides extension methods for the Enum class.</Description>
     <Copyright>Apache-2.0</Copyright>
-    <PackageIcon>ezgif-3-57d9c1e68a.png</PackageIcon>
+    <PackageIcon></PackageIcon>
     <PackageTags>enum;vadvance;venum;collection;extension</PackageTags>
     <PackAsTool>True</PackAsTool>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Authors>Daniel K. Valente</Authors>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Include="Virtma Logo V2.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="C:\Users\kekoa\Downloads\ezgif-3-57d9c1e68a.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>
