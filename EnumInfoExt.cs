@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace VEnum
 {
+	/// <summary>
+	/// Provides information related to an <see cref="Enum"/>.
+	/// </summary>
 	public static class EnumInfoExt
 	{
 		/// <summary>
