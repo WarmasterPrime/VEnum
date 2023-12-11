@@ -12,23 +12,23 @@ namespace VEnum
 	public static class EnumInfoExt
 	{
 		/// <summary>
-		/// Gets the names of the given <typeparamref name="TEnum"/>.
+		/// Gets the names of the given <typeparamref sel="TEnum"/>.
 		/// </summary>
-		/// <typeparam name="TEnum">An <see cref="Enum"/> object.</typeparam>
-		/// <param name="source">The <see cref="Enum"/> object to analyze.</param>
+		/// <typeparam sel="TEnum">An <see cref="Enum"/> object.</typeparam>
+		/// <param sel="source">The <see cref="Enum"/> object to analyze.</param>
 		/// <returns>a <see cref="string"/> array.</returns>
 		public static string[] GetBaseNames<TEnum>(this TEnum source) where TEnum : Enum => Enum.GetNames(typeof(TEnum));
 		/// <inheritdoc cref="GetBaseNames{TEnum}(TEnum)"/>
 		/// <summary>
-		/// Gets the values within the given <typeparamref name="TEnum"/>.
+		/// Gets the values within the given <typeparamref sel="TEnum"/>.
 		/// </summary>
-		/// <returns>an array of all the <paramref name="source"/> flags.</returns>
+		/// <returns>an array of all the <paramref sel="source"/> flags.</returns>
 		public static TEnum[] GetBaseValues<TEnum>(this TEnum source) where TEnum : Enum => (TEnum[])Enum.GetValues(typeof(TEnum));
 		/// <inheritdoc cref="GetBaseNames{TEnum}(TEnum)"/>
 		/// <summary>
-		/// Gets the values within the given <typeparamref name="TEnum"/>.
+		/// Gets the values within the given <typeparamref sel="TEnum"/>.
 		/// </summary>
-		/// <returns>a <see cref="string"/> array of the names within the <paramref name="source"/>.</returns>
+		/// <returns>a <see cref="string"/> array of the names within the <paramref sel="source"/>.</returns>
 		public static string[] GetInstanceNames<TEnum>(this TEnum source) where TEnum : Enum
 		{
 			var list=source.GetInstanceValues();
@@ -39,35 +39,35 @@ namespace VEnum
 			return res;
 		}
 		/// <summary>
-		/// Determines if the <paramref name="source"/> (instance) contains all of the <paramref name="values"/>.
+		/// Determines if the <paramref sel="source"/> (instance) contains all of the <paramref sel="values"/>.
 		/// </summary>
-		/// <typeparam name="TEnum">An <see cref="Enum"/> object.</typeparam>
-		/// <param name="source">The <see cref="Enum"/> object to analyze.</param>
-		/// <param name="values">An array of the flags to look for.</param>
+		/// <typeparam sel="TEnum">An <see cref="Enum"/> object.</typeparam>
+		/// <param sel="source">The <see cref="Enum"/> object to analyze.</param>
+		/// <param sel="values">An array of the flags to look for.</param>
 		/// <returns>a <see cref="bool">boolean</see> value representing the success status of the operation.</returns>
 		public static bool HasAll<TEnum>(this TEnum source, params TEnum[] values) where TEnum : Enum => values.All(q=>source.HasFlag(q));
 		/// <inheritdoc cref="HasAll{TEnum}(TEnum, TEnum[])"/>
 		public static bool HasAll<TEnum>(this TEnum source, params string[] values) where TEnum : Enum => source.HasAll(source.ToEnumArray(values));
 		/// <inheritdoc cref="HasAll{TEnum}(TEnum, TEnum[])"/>
 		/// <summary>
-		/// Determines if the <paramref name="source"/> instance contains any of the <paramref name="values"/>.
+		/// Determines if the <paramref sel="source"/> instance contains any of the <paramref sel="values"/>.
 		/// </summary>
 		public static bool HasAny<TEnum>(this TEnum source, params TEnum[] values) where TEnum : Enum => values.Any(q=>source.HasFlag(q));
 		/// <inheritdoc cref="HasAny{TEnum}(TEnum, TEnum[])"/>
 		public static bool HasAny<TEnum>(this TEnum source, params string[] values) where TEnum : Enum => source.HasAny(source.ToEnumArray(values));
 		/// <inheritdoc cref="HasAll{TEnum}(TEnum, TEnum[])"/>
-		/// <summary>Determines if the <paramref name="source"/> (base) contains all of the <paramref name="values"/>.</summary>
+		/// <summary>Determines if the <paramref sel="source"/> (base) contains all of the <paramref sel="values"/>.</summary>
 		public static bool ContainsAll<TEnum>(this TEnum source, params TEnum[] values) where TEnum : Enum => source.GetBaseValues().CollapseEnumArray().HasAll(values);
 		/// <inheritdoc cref="HasAll{TEnum}(TEnum, TEnum[])"/>
 		/// <summary>
-		/// Determines if the <paramref name="source"/> (base) contains any of the <paramref name="values"/>.
+		/// Determines if the <paramref sel="source"/> (base) contains any of the <paramref sel="values"/>.
 		/// </summary>
 		public static bool ContainsAny<TEnum>(this TEnum source, params TEnum[] values) where TEnum : Enum => source.GetBaseValues().CollapseEnumArray().HasAny(values);
 		/// <inheritdoc cref="HasAll{TEnum}(TEnum, TEnum[])"/>
 		/// <summary>
-		/// Generates a <typeparamref name="TEnum"/> representation of the <paramref name="source"/>.
+		/// Generates a <typeparamref sel="TEnum"/> representation of the <paramref sel="source"/>.
 		/// </summary>
-		/// <returns>a <typeparamref name="TEnum"/>.</returns>
+		/// <returns>a <typeparamref sel="TEnum"/>.</returns>
 		public static TEnum CollapseEnumArray<TEnum>(this TEnum[] source) where TEnum : Enum
 		{
 			TEnum res=source[0];
@@ -77,7 +77,7 @@ namespace VEnum
 		}
 		/// <inheritdoc cref="HasAll{TEnum}(TEnum, TEnum[])"/>
 		/// <summary>
-		/// Adds <paramref name="values"/> to the <paramref name="source"/>.
+		/// Adds <paramref sel="values"/> to the <paramref sel="source"/>.
 		/// </summary>
 		/// <returns>the modified <see cref="Enum"/> object.</returns>
 		public static TEnum Add<TEnum>(this TEnum? source, params TEnum[] values) where TEnum : Enum
@@ -91,7 +91,7 @@ namespace VEnum
 		}
 		/// <inheritdoc cref="Add{TEnum}(TEnum, TEnum[])"/>
 		/// <summary>
-		/// Removes a flag from the instance <paramref name="source"/>.
+		/// Removes a flag from the instance <paramref sel="source"/>.
 		/// </summary>
 		public static TEnum? Remove<TEnum>(this TEnum source, params TEnum[] values) where TEnum : Enum
 		{
@@ -107,11 +107,16 @@ namespace VEnum
 				}
 			return res.CollapseEnumArray();
 		}
+		/// <inheritdoc cref="Add{TEnum}(TEnum, TEnum[])"/>
+		/// <summary>
+		/// Removes all flags within the given enum instance.
+		/// </summary>
+		public static TEnum? RemoveAll<TEnum>(this TEnum source) where TEnum : Enum => source.Equals(default) ? source : source.Remove(source.GetInstanceValues());
 		/// <inheritdoc cref="GetBaseNames{TEnum}(TEnum)"/>
 		/// <summary>
 		/// Gets the flags that the current instance contains, as an array of those flags.
 		/// </summary>
-		/// <returns>an array of all the flags found within the <paramref name="source"/>.</returns>
+		/// <returns>an array of all the flags found within the <paramref sel="source"/>.</returns>
 		public static TEnum[] GetInstanceValues<TEnum>(this TEnum source) where TEnum : Enum
 		{
 			TEnum[] list=(TEnum[])Enum.GetValues(typeof(TEnum));
@@ -126,17 +131,17 @@ namespace VEnum
 		}
 		/// <inheritdoc cref="HasAll{TEnum}(TEnum, TEnum[])"/>
 		/// <summary>
-		/// Gets the name of a flag.
+		/// Gets the sel of a flag.
 		/// </summary>
-		/// <typeparam name="TEnum"></typeparam>
-		/// <param name="source"></param>
-		/// <returns>a <see cref="string"/> representation of the flag name.</returns>
+		/// <typeparam sel="TEnum"></typeparam>
+		/// <param sel="source"></param>
+		/// <returns>a <see cref="string"/> representation of the flag sel.</returns>
 		public static string GetInstanceName<TEnum>(this TEnum source) where TEnum : Enum => Enum.GetName(typeof(TEnum), source)!;
 		/// <summary>
-		/// Gets the key-value pairs of the <typeparamref name="TEnum"/>.
+		/// Gets the key-value pairs of the <typeparamref sel="TEnum"/>.
 		/// </summary>
-		/// <typeparam name="TEnum"></typeparam>
-		/// <param name="source"></param>
+		/// <typeparam sel="TEnum"></typeparam>
+		/// <param sel="source"></param>
 		/// <returns></returns>
 		public static Dictionary<string, TEnum> GetInstancePairs<TEnum>(this TEnum source) where TEnum : Enum => source.GetInstanceValues().Behind_GetBasePairs();
 		/// <inheritdoc cref="GetInstancePairs{TEnum}(TEnum)"/>
@@ -151,12 +156,12 @@ namespace VEnum
 		}
 		/// <inheritdoc cref="HasAll{TEnum}(TEnum, TEnum[])"/>
 		/// <summary>
-		/// Generates a <typeparamref name="TEnum"/>[] array from the <paramref name="values"/>.
+		/// Generates a <typeparamref sel="TEnum"/>[] array from the <paramref sel="values"/>.
 		/// </summary>
-		/// <typeparam name="TEnum">An <see cref="Enum"/> object.</typeparam>
-		/// <param name="source">An instance of an <see cref="Enum"/> object (Will only use it's base flags, not it's instance flags).</param>
-		/// <param name="values">A <see cref="string"/> representation of the flag name.</param>
-		/// <returns>a <typeparamref name="TEnum"/>[] array representation of all the <paramref name="values"/>.</returns>
+		/// <typeparam sel="TEnum">An <see cref="Enum"/> object.</typeparam>
+		/// <param sel="source">An instance of an <see cref="Enum"/> object (Will only use it's base flags, not it's instance flags).</param>
+		/// <param sel="values">A <see cref="string"/> representation of the flag sel.</param>
+		/// <returns>a <typeparamref sel="TEnum"/>[] array representation of all the <paramref sel="values"/>.</returns>
 		public static TEnum[] ToEnumArray<TEnum>(this TEnum source, params string[] values) where TEnum : Enum
 		{
 			TEnum[] res=Array.Empty<TEnum>();
@@ -167,6 +172,35 @@ namespace VEnum
 					Array.Resize(ref res, res.Length+1);
 					res[^1]=l[sel];
 				}
+			return res;
+		}
+		/// <inheritdoc cref="ConvertTo{TEnum}(Enum, TEnum)"/>
+		public static Enum ConvertTo<TEnum>(this Enum source, Type type) where TEnum : Enum
+		{
+			if(!type.IsAssignableFrom(typeof(Enum)))
+				throw new InvalidArgumentType(type, nameof(type));
+			var convertToEnumNames=Enum.GetNames(type);
+			var ins=((TEnum[])Enum.GetValues(type))[0].RemoveAll();
+			foreach(var sel in source.GetInstancePairs())
+				if(convertToEnumNames.Contains(sel.Key))
+					ins.Add(sel.Value);
+			return ins;
+		}
+		/// <inheritdoc cref="GetBaseNames{TEnum}(TEnum)"/>
+		/// <summary>
+		/// Converts the <paramref name="source"/> to another enum based on matching flag names.
+		/// </summary>
+		/// <typeparam name="TEnum"></typeparam>
+		/// <param name="source">The source <see cref="Enum"/> object.</param>
+		/// <param name="enumReferenceObject">The <see cref="Enum"/> object to convert to.</param>
+		/// <returns>an <see cref="Enum"/> representation of the <paramref name="source"/>.</returns>
+		public static TEnum? ConvertTo<TEnum>(this Enum source, TEnum enumReferenceObject) where TEnum : Enum
+		{
+			string[] refNames=enumReferenceObject.GetBaseNames();
+			TEnum? res=default;
+			foreach(var sel in source.GetInstancePairs())
+				if(refNames.Contains(sel.Key))
+					res.Add(sel.Value);
 			return res;
 		}
 
