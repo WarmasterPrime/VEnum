@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VEnum
+﻿namespace VEnum
 {
 	/// <summary>
 	/// Provides information related to an <see cref="Enum"/>.
